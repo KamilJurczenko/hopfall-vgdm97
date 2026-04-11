@@ -45,7 +45,9 @@ hopfall-vgdm97/
 ├── index.html       # Main presentation (16 slides, ~15 min)
 ├── css/
 │   └── hopfall.css  # Custom pixel-art / game theme
-├── assets/          # Screenshots, GIFs, logos (add your own)
+├── assets/
+│   ├── images/      # Presentation screenshots, GIFs, logos
+│   └── videos/      # Presentation clips and trailers
 ├── package.json     # Optional: local dev server
 └── README.md
 ```
@@ -54,5 +56,5 @@ hopfall-vgdm97/
 
 - **Slide content** — edit `index.html`; each slide is a `<section>` block with a comment header.
 - **Theme colours** — tweak CSS variables at the top of `css/hopfall.css`.
-- **Assets** — drop screenshots / GIFs into `assets/` and reference them with `<img>` tags.
+- **Assets** — drop screenshots / GIFs into `assets/images/` and presentation clips into `assets/videos/`.
 - **Speaker notes** — add `<aside class="notes">…</aside>` inside any `<section>`.
