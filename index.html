@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Hopfall – 15-Minute Game Dev Talk</title>
+
+  <!-- RevealJS (local) -->
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css" />
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css" />
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css" />
+
+  <!-- Custom Hopfall theme -->
+  <link rel="stylesheet" href="css/hopfall.css" />
+</head>
+
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 1 — TITLE
+       ~30 seconds
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <div class="title-slide">
+      <div class="pixel-divider">✦ ── ✦ ── ✦</div>
+      <h1>HOPFALL</h1>
+      <p class="subtitle">A Physics-Driven Platformer About Gravity, Rhythm &amp; Survival</p>
+      <div class="pixel-divider">✦ ── ✦ ── ✦</div>
+      <p class="tagline">"Every fall is a choice."</p>
+      <br />
+      <p style="font-size:0.55em; color:var(--hf-muted);">
+        VGDM97 &nbsp;|&nbsp; 15-Minute Talk &nbsp;|&nbsp; 2025
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 2 — WHO AM I / TEAM
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>👾 The Team</h2>
+    <div class="cols-2" style="margin-top:1rem;">
+      <div class="card">
+        <h3>🎮 Design &amp; Direction</h3>
+        <p>Core mechanics, level design, player experience — making the hop <em>feel</em> right.</p>
+      </div>
+      <div class="card card-cyan">
+        <h3>💻 Programming</h3>
+        <p>Physics engine integration, procedural generation, game-feel tuning.</p>
+      </div>
+      <div class="card card-amber">
+        <h3>🎨 Art &amp; Animation</h3>
+        <p>Pixel art characters, parallax environments, death animations (lots of them).</p>
+      </div>
+      <div class="card">
+        <h3>🎵 Audio</h3>
+        <p>Dynamic soundtrack that reacts to in-game rhythm &amp; tension.</p>
+      </div>
+    </div>
+    <p style="margin-top:0.8rem; font-size:0.55em; color:var(--hf-muted);">
+      Solo or team? Swap out whatever applies to your project.
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 3 — WHAT IS HOPFALL?
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>🌍 What is Hopfall?</h2>
+    <blockquote class="hf-quote">
+      A precision platformer where <strong>gravity is your greatest tool</strong> — and your deadliest enemy.
+      You don't just jump; you <em>commit to the fall</em>.
+    </blockquote>
+    <div class="cols-2" style="margin-top:1rem;">
+      <div>
+        <h3>Genre</h3>
+        <p>Precision Platformer / Roguelite</p>
+        <h3 style="margin-top:0.8em;">Platform</h3>
+        <p>PC (Windows &amp; macOS) — eventual mobile stretch goal</p>
+      </div>
+      <div>
+        <h3>Scope</h3>
+        <p>10–15 handcrafted levels + procedural endless mode</p>
+        <h3 style="margin-top:0.8em;">Status</h3>
+        <p>Prototype complete <span class="badge badge-cyan">v0.3</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 4 — CORE CONCEPT / ELEVATOR PITCH
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>💡 The Core Concept</h2>
+    <div class="cols-3" style="margin-top:1rem;">
+      <div class="card center">
+        <span style="font-size:2em;">🦘</span>
+        <h3>HOP</h3>
+        <p>Short, precise jumps. Timing is everything.</p>
+      </div>
+      <div class="card card-cyan center">
+        <span style="font-size:2em;">⬇️</span>
+        <h3>FALL</h3>
+        <p>Let go. Controlled free-fall opens new paths.</p>
+      </div>
+      <div class="card card-amber center">
+        <span style="font-size:2em;">🔄</span>
+        <h3>LOOP</h3>
+        <p>Die, learn, adapt. Every run reveals a secret.</p>
+      </div>
+    </div>
+    <p style="margin-top:1rem;">
+      The twist: <strong>holding jump</strong> cancels gravity for a brief window —
+      but your momentum carries forward. Master the rhythm or meet the spikes. 🪝
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 5 — GAMEPLAY MECHANICS (part 1)
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>⚙️ Core Mechanics</h2>
+    <ul>
+      <li class="fragment"><strong>Hop</strong> — tap to jump with a fixed arc; hold to float briefly</li>
+      <li class="fragment"><strong>Fall Dash</strong> — air-dash downward for speed &amp; gap crossing</li>
+      <li class="fragment"><strong>Wall Catch</strong> — cling to surfaces; release resets fall momentum</li>
+      <li class="fragment"><strong>Gravity Wells</strong> — environmental hazards that pull or repel the player</li>
+      <li class="fragment"><strong>Rhythm Windows</strong> — actions land a bonus multiplier on the beat</li>
+    </ul>
+    <p class="fragment" style="margin-top:0.8rem; color:var(--hf-accent2);">
+      All five mechanics emerge from a single physics model — no special-case code.
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 6 — GAMEPLAY MECHANICS (part 2 – feel)
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>🕹️ Making it <em>Feel</em> Right</h2>
+    <div class="cols-2">
+      <div class="card">
+        <h3>Coyote Time</h3>
+        <p>6 frame grace period after walking off a ledge — players feel skilled, not cheated.</p>
+      </div>
+      <div class="card card-cyan">
+        <h3>Jump Buffer</h3>
+        <p>8 frame input buffer — forgiving without removing challenge.</p>
+      </div>
+      <div class="card card-amber">
+        <h3>Variable Gravity</h3>
+        <p>Gravity scale ramps up mid-fall. Short hops feel snappy; long falls feel weighty.</p>
+      </div>
+      <div class="card">
+        <h3>Screen Shake &amp; Hitstop</h3>
+        <p>Every landing has feedback. Player always knows where they are in space.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 7 — LEVEL DESIGN
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>🗺️ Level Design Philosophy</h2>
+    <blockquote class="hf-quote">
+      "Each level is a sentence. The player reads it left-to-right, then has to write the next one."
+    </blockquote>
+    <div class="timeline" style="margin-top:1rem;">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p><strong>Zone 1 — The Ledge</strong>: teaches the hop. Flat platforms, no enemies.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--hf-accent);"></div>
+        <p><strong>Zone 2 — The Abyss</strong>: introduces falls. Safety nets below teach commitment.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--hf-accent3);"></div>
+        <p><strong>Zone 3 — The Pulse</strong>: rhythm windows unlock. Beat-sync hazards appear.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:#f43f5e;"></div>
+        <p><strong>Zone 4 — Freefall</strong>: procedural section. No safe floor. Pure mastery check.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 8 — VISUAL STYLE
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>🎨 Visual Style</h2>
+    <div class="cols-2">
+      <div>
+        <h3>Aesthetic</h3>
+        <p>
+          <strong>High-contrast pixel art</strong> with a limited 16-color palette per zone.
+          Dark backgrounds, vivid foreground hazards — clear readability under pressure.
+        </p>
+        <h3 style="margin-top:1em;">Parallax Layers</h3>
+        <p>3-layer scrolling: background cityscape → midground platforms → foreground particles.</p>
+      </div>
+      <div>
+        <div class="card card-amber center" style="margin-bottom:1rem;">
+          <span style="font-size:1.8em;">🌑</span>
+          <h3>Zone 1</h3>
+          <p>Deep violet / charcoal</p>
+        </div>
+        <div class="card card-cyan center">
+          <span style="font-size:1.8em;">🌊</span>
+          <h3>Zone 4</h3>
+          <p>Electric cyan / near-black</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 9 — AUDIO / MUSIC
+       ~45 seconds
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>🎵 Sound &amp; Music</h2>
+    <ul>
+      <li class="fragment">Adaptive soundtrack — BPM locks to the player's combo streak</li>
+      <li class="fragment">Procedural SFX layers — each hop pitch-shifts based on height</li>
+      <li class="fragment">Death jingle is always 1 bar — keeps pace, avoids frustration</li>
+      <li class="fragment">Silence as a mechanic — Gravity Wells mute the music</li>
+    </ul>
+    <blockquote class="hf-quote fragment" style="margin-top:1rem;">
+      "The music doesn't play <em>at</em> you — it plays <em>with</em> you."
+    </blockquote>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 10 — TECH STACK
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>🔧 Technical Stack</h2>
+    <div class="cols-2" style="margin-top:0.8rem;">
+      <div>
+        <h3>Engine &amp; Runtime</h3>
+        <p>
+          <span class="tech-pill">Godot 4.2</span>
+          <span class="tech-pill">GDScript</span>
+          <span class="tech-pill">Jolt Physics</span>
+        </p>
+        <h3 style="margin-top:1em;">Audio</h3>
+        <p>
+          <span class="tech-pill">FMOD Studio</span>
+          <span class="tech-pill">Wwise</span>
+        </p>
+        <h3 style="margin-top:1em;">Art Pipeline</h3>
+        <p>
+          <span class="tech-pill">Aseprite</span>
+          <span class="tech-pill">Tiled</span>
+          <span class="tech-pill">Krita</span>
+        </p>
+      </div>
+      <div>
+        <h3>CI / Build</h3>
+        <p>
+          <span class="tech-pill">GitHub Actions</span>
+          <span class="tech-pill">Godot Export</span>
+        </p>
+        <h3 style="margin-top:1em;">Distribution</h3>
+        <p>
+          <span class="tech-pill">itch.io</span>
+          <span class="tech-pill">HTML5 build</span>
+        </p>
+        <h3 style="margin-top:1em;">Version Control</h3>
+        <p>
+          <span class="tech-pill">Git LFS</span>
+          <span class="tech-pill">GitHub</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 11 — CHALLENGES &amp; SOLUTIONS (part 1)
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>🧱 Challenges We Faced</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <p><strong>Problem:</strong> Physics felt floaty and unpredictable at high frame rates.</p>
+          <p style="color:var(--hf-accent2);">→ Fixed timestep + custom gravity multiplier interpolated per frame.</p>
+        </div>
+      </div>
+      <div class="timeline-item fragment">
+        <div class="timeline-dot" style="background:var(--hf-accent3);"></div>
+        <div>
+          <p><strong>Problem:</strong> Rhythm detection drifted after 2–3 minutes of play.</p>
+          <p style="color:var(--hf-accent2);">→ Audio clock anchored to a dedicated AudioStreamPlayer node, not game delta.</p>
+        </div>
+      </div>
+      <div class="timeline-item fragment">
+        <div class="timeline-dot" style="background:#f43f5e;"></div>
+        <div>
+          <p><strong>Problem:</strong> Players stopped reading hazards — died "unfairly".</p>
+          <p style="color:var(--hf-accent2);">→ Hazard preview flashes 1 beat before activation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 12 — PLAYTESTING INSIGHTS
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>🧪 Playtesting Insights</h2>
+    <div class="cols-3" style="margin-top:0.8rem;">
+      <div class="card center">
+        <span class="stat">78%</span>
+        <p>of first-time players cleared Zone 1 in under 3 minutes</p>
+      </div>
+      <div class="card card-cyan center">
+        <span class="stat">4.2×</span>
+        <p>average retry rate on the first Gravity Well room</p>
+      </div>
+      <div class="card card-amber center">
+        <span class="stat">92%</span>
+        <p>said the death animation made them laugh before retrying</p>
+      </div>
+    </div>
+    <ul style="margin-top:1rem;">
+      <li class="fragment">Top feedback: <em>"Needs a map / progress indicator"</em> → added in v0.3</li>
+      <li class="fragment">Surprise hit: combo-streak music acceleration — players loved it</li>
+    </ul>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 13 — DEMO MOMENT / LIVE PLAY
+       ~1 minute 30 seconds
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <div class="title-slide">
+      <h2>🎮 Demo Time</h2>
+      <br />
+      <div class="icon-row">🕹️ 🌑 ⬇️ 💥 🔄</div>
+      <p style="color:var(--hf-muted); font-size:0.7em;">
+        [ Switch to game window or play the trailer here ]
+      </p>
+      <br />
+      <div class="card card-cyan" style="text-align:left;">
+        <h3>What to watch for</h3>
+        <ul>
+          <li>The gravity-cancel window on long falls</li>
+          <li>Beat-sync hazard previews lighting up</li>
+          <li>How the music BPM escalates with combo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 14 — LESSONS LEARNED
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>📚 Lessons Learned</h2>
+    <ul>
+      <li class="fragment">
+        <strong>Prototype the feel first.</strong>
+        We spent 3 days on art before the jump felt good — wrong order.
+      </li>
+      <li class="fragment">
+        <strong>One mechanic, many expressions.</strong>
+        Every level challenge uses the same five moves — complexity comes from combination.
+      </li>
+      <li class="fragment">
+        <strong>Playtest early, playtest strangers.</strong>
+        Friends are polite. Strangers will die on the tutorial and tell you it's broken.
+      </li>
+      <li class="fragment">
+        <strong>Sound is half the game.</strong>
+        Muting the audio during testing hid rhythm-readability bugs for weeks.
+      </li>
+    </ul>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 15 — NEXT STEPS / ROADMAP
+       ~1 minute
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>🗓️ What's Next</h2>
+    <div class="cols-2" style="margin-top:0.8rem;">
+      <div>
+        <h3>Short term <span class="badge badge-cyan">v0.4</span></h3>
+        <ul>
+          <li>Boss fight — rhythm-based gravity surge</li>
+          <li>Leaderboard &amp; ghost replays</li>
+          <li>Accessibility: input remapping + colorblind mode</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Long term <span class="badge badge-amber">v1.0</span></h3>
+        <ul>
+          <li>Steam Early Access release</li>
+          <li>Level editor + Steam Workshop</li>
+          <li>Co-op speed-run mode (race to the bottom)</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fragment" style="margin-top:1rem; color:var(--hf-accent2);">
+      itch.io page live now → <strong>hopfall.itch.io</strong>
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 16 — THANK YOU / Q&A
+       ~30 seconds
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <div class="title-slide">
+      <div class="pixel-divider">✦ ── ✦ ── ✦</div>
+      <h1>THANK YOU</h1>
+      <p class="subtitle">Questions? Let's talk!</p>
+      <div class="pixel-divider">✦ ── ✦ ── ✦</div>
+      <br />
+      <div class="cols-3" style="text-align:left;">
+        <div class="card center">
+          <span style="font-size:1.5em;">🕹️</span>
+          <p><strong>Play</strong><br/>hopfall.itch.io</p>
+        </div>
+        <div class="card card-cyan center">
+          <span style="font-size:1.5em;">💻</span>
+          <p><strong>Source</strong><br/>github.com/KamilJurczenko/hopfall-vgdm97</p>
+        </div>
+        <div class="card card-amber center">
+          <span style="font-size:1.5em;">💬</span>
+          <p><strong>Feedback</strong><br/>discord.gg/hopfall</p>
+        </div>
+      </div>
+      <br />
+      <p class="tagline">"Every fall is a choice."</p>
+    </div>
+  </section>
+
+</div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<!-- RevealJS (local) -->
+<script src="node_modules/reveal.js/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    backgroundTransition: 'fade',
+
+    // 15-minute talk pacing hints visible in presenter mode
+    totalTime: 900, // seconds
+
+    // Controls
+    controls: true,
+    progress: true,
+    center: false,
+
+    // Keyboard shortcuts
+    keyboard: true,
+
+    // Make fragments work with arrow keys
+    fragmentInURL: false,
+
+    // PDF export layout
+    pdfSeparateFragments: false,
+  });
+</script>
+</body>
+</html>

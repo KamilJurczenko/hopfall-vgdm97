@@ -1,0 +1,243 @@
+/* ============================================================
+   Hopfall – Custom RevealJS Theme
+   ============================================================ */
+
+/* ── Fonts ─────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap');
+
+/* Local font fallbacks when CDN is unavailable */
+
+/* ── Root variables ─────────────────────────────────────────── */
+:root {
+  --hf-bg:        #0d0d1a;
+  --hf-bg2:       #12122a;
+  --hf-accent:    #7c3aed;   /* purple */
+  --hf-accent2:   #06b6d4;   /* cyan   */
+  --hf-accent3:   #f59e0b;   /* amber  */
+  --hf-text:      #e2e8f0;
+  --hf-muted:     #94a3b8;
+  --hf-pixel:     'Press Start 2P', 'Courier New', monospace;
+  --hf-body:      'Nunito', system-ui, sans-serif;
+}
+
+/* ── Reveal overrides ───────────────────────────────────────── */
+.reveal {
+  font-family: var(--hf-body);
+  color: var(--hf-text);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  height: 100%;
+}
+
+/* ── Background ─────────────────────────────────────────────── */
+.reveal .slide-background {
+  background: var(--hf-bg);
+}
+
+/* ── Headings ───────────────────────────────────────────────── */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: var(--hf-pixel);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+}
+
+.reveal h1 { font-size: 1.6em; color: var(--hf-accent2); line-height: 1.4; }
+.reveal h2 { font-size: 1.1em; color: var(--hf-accent);  line-height: 1.5; }
+.reveal h3 { font-size: 0.75em; color: var(--hf-accent3); }
+.reveal h4 { font-size: 0.6em;  color: var(--hf-muted); }
+
+/* ── Body text ──────────────────────────────────────────────── */
+.reveal p,
+.reveal li {
+  font-size: 0.72em;
+  line-height: 1.7;
+  color: var(--hf-text);
+}
+
+.reveal ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reveal ul li::before {
+  content: '▶ ';
+  color: var(--hf-accent2);
+}
+
+/* ── Cards / boxes ──────────────────────────────────────────── */
+.card {
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  border-radius: 12px;
+  padding: 1rem 1.4rem;
+  margin: 0.5rem 0;
+}
+
+.card-cyan {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.card-amber {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+/* ── Grid helpers ───────────────────────────────────────────── */
+.cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.cols-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+/* ── Highlight / badge ──────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  background: var(--hf-accent);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.15em 0.7em;
+  font-size: 0.55em;
+  font-family: var(--hf-body);
+  font-weight: 700;
+  vertical-align: middle;
+  margin-left: 0.4em;
+}
+
+.badge-cyan  { background: var(--hf-accent2); color: #0d0d1a; }
+.badge-amber { background: var(--hf-accent3); color: #0d0d1a; }
+
+/* ── Title slide extras ──────────────────────────────────────── */
+.title-slide {
+  text-align: center;
+}
+
+.title-slide .subtitle {
+  font-family: var(--hf-body);
+  font-size: 0.85em;
+  color: var(--hf-muted);
+  margin-top: 0.3em;
+}
+
+.title-slide .tagline {
+  font-family: var(--hf-body);
+  font-size: 1em;
+  color: var(--hf-accent2);
+  margin-top: 1.2em;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.pixel-divider {
+  font-family: var(--hf-pixel);
+  font-size: 0.4em;
+  color: var(--hf-accent);
+  letter-spacing: 0.3em;
+  margin: 0.8em 0;
+}
+
+/* ── Progress / timeline ────────────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  background: var(--hf-accent2);
+  margin-top: 5px;
+}
+
+/* ── Stat number ────────────────────────────────────────────── */
+.stat {
+  font-family: var(--hf-pixel);
+  font-size: 1.4em;
+  color: var(--hf-accent3);
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+/* ── Code / tech pill ───────────────────────────────────────── */
+.tech-pill {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 0.2em 0.6em;
+  font-family: monospace;
+  font-size: 0.65em;
+  color: var(--hf-accent2);
+  margin: 0.15em;
+}
+
+/* ── Reveal controls tint ───────────────────────────────────── */
+.reveal .controls {
+  color: var(--hf-accent);
+}
+
+.reveal .progress {
+  color: var(--hf-accent2);
+  height: 4px;
+}
+
+/* ── Slide number ───────────────────────────────────────────── */
+.reveal .slide-number {
+  background: transparent;
+  color: var(--hf-muted);
+  font-size: 0.5em;
+}
+
+/* ── Fragment highlights ────────────────────────────────────── */
+.reveal .fragment.highlight-current-blue.current-fragment {
+  color: var(--hf-accent2);
+}
+
+/* ── Centering helper ───────────────────────────────────────── */
+.center { text-align: center; }
+
+/* ── Quote style ────────────────────────────────────────────── */
+blockquote.hf-quote {
+  border-left: 4px solid var(--hf-accent2);
+  padding: 0.6em 1em;
+  background: rgba(6, 182, 212, 0.08);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--hf-text);
+  font-size: 0.75em;
+}
+
+/* ── Emoji icon decorators ──────────────────────────────────── */
+.icon-row {
+  display: flex;
+  gap: 1rem;
+  font-size: 2em;
+  justify-content: center;
+  margin: 0.6em 0;
+}
