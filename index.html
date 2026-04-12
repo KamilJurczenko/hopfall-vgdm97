@@ -63,29 +63,30 @@
         <p class="intro-role">Solo developer of <strong>Hopfall</strong></p>
       </div>
       <div class="intro-keywords-card">
-        <h3>Background</h3>
-        <div class="keyword-list">
-          <span class="keyword-pill">Solo Development</span>
-          <span class="keyword-pill">Systems Design</span>
-          <span class="keyword-pill">Creature Collector</span>
-          <span class="keyword-pill">Roguelite Structure</span>
-          <span class="keyword-pill">Autobattler Strategy</span>
+        <div class="intro-keywords-top">
+          <div class="keyword-list intro-keyword-list">
+            <span class="keyword-pill">Computer Engineering</span>
+            <span class="keyword-pill">two mobile games</span>
+            <span class="keyword-pill">Pixel Art</span>
+            <span class="keyword-pill">Systems Design</span>
+          </div>
+          <div class="intro-project-item intro-project-item-vertical">
+            <img
+              class="intro-project-image intro-project-image-vertical"
+              src="presentation-media/images/retro-tunnel.png"
+              alt="Retro Tunnel project screenshot"
+            />
+          </div>
         </div>
-      </div>
-      <div class="intro-social-card">
-        <h3>Links</h3>
-        <div class="social-list compact-socials">
-          <p><strong>Steam</strong><br/>store.steampowered.com/app/3456640/Hopfall</p>
-          <p><strong>Discord</strong><br/>discord.gg/6GG9R9xjy7</p>
+        <div class="intro-projects intro-projects-bottom">
+          <div class="intro-project-item intro-project-item-horizontal">
+            <img
+              class="intro-project-image intro-project-image-horizontal"
+              src="presentation-media/images/frog%20jump.png"
+              alt="Frog Jump project screenshot"
+            />
+          </div>
         </div>
-      </div>
-      <div class="qr-card center">
-        <h3>Steam QR</h3>
-        <img
-          class="qr-image"
-          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&amp;data=https%3A%2F%2Fstore.steampowered.com%2Fapp%2F3456640%2FHopfall%2F"
-          alt="QR code linking to the Hopfall Steam page"
-        />
       </div>
     </div>
   </section>
@@ -484,6 +485,9 @@
 <script src="node_modules/reveal.js/dist/reveal.js"></script>
 <script>
   Reveal.initialize({
+    width: 1280,
+    height: '100%',
+    margin: 0.04,
     hash: true,
     slideNumber: 'c/t',
     transition: 'fade',
