@@ -124,6 +124,14 @@
   align-items: start;
 }
 
+.core-concept-cards .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+
 /* ── Highlight / badge ──────────────────────────────────────── */
 .badge {
   display: inline-block;
