@@ -7,7 +7,6 @@
     "dev": "npx serve ."
   },
   "dependencies": {
-    "pixelarticons": "^2.0.2",
     "reveal.js": "^5.1.0"
   },
   "devDependencies": {
