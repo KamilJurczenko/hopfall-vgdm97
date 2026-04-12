@@ -22,51 +22,75 @@
        SLIDE 1 — TITLE
        ~30 seconds
   ══════════════════════════════════════════════════════════ -->
+  <section class="media-slide">
+    <img
+      class="media-slide-image"
+      src="presentation-media/images/Title%20Capsule.png"
+      alt="Hopfall title capsule art"
+    />
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SLIDE 2 — HOOK
+       ~30 seconds
+  ══════════════════════════════════════════════════════════ -->
   <section>
-    <div class="title-slide">
-      <div class="pixel-divider">✦ ── ✦ ── ✦</div>
-      <h1>HOPFALL</h1>
-      <p class="subtitle">A Physics-Driven Platformer About Gravity, Rhythm &amp; Survival</p>
-      <div class="pixel-divider">✦ ── ✦ ── ✦</div>
-      <p class="tagline">"Every fall is a choice."</p>
-      <br />
-      <p style="font-size:0.55em; color:var(--hf-muted);">
-        VGDM97 &nbsp;|&nbsp; 15-Minute Talk &nbsp;|&nbsp; 2025
+    <div class="hook-slide">
+      <p class="hook-kicker">Before I explain how Hopfall works, here is the promise:</p>
+      <blockquote class="hf-quote hook-quote">
+        What if <strong>falling</strong> was not the punishment in a platformer, but the skill expression?
+      </blockquote>
+      <p class="hook-line">
+        Hopfall is built around one tension: the moment you stop trying to avoid the fall and start learning how to use it.
       </p>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       SLIDE 2 — WHO AM I / TEAM
-       ~1 minute
+       SLIDE 3 — INTRO / SOCIALS
+       ~45 seconds
   ══════════════════════════════════════════════════════════ -->
   <section>
-    <h2>👾 The Team</h2>
-    <div class="cols-2" style="margin-top:1rem;">
-      <div class="card">
-        <h3>🎮 Design &amp; Direction</h3>
-        <p>Core mechanics, level design, player experience — making the hop <em>feel</em> right.</p>
+    <h2>👋 Quick Introduction</h2>
+    <div class="intro-grid" style="margin-top:1rem;">
+      <div class="intro-profile-card">
+        <img
+          class="intro-avatar"
+          src="presentation-media/images/profilbild.jpg"
+          alt="Avatar of Kamil Jurczenko"
+        />
+        <h3>Kamil Jurczenko</h3>
+        <p class="intro-role">Developer of <strong>Hopfall</strong></p>
       </div>
-      <div class="card card-cyan">
-        <h3>💻 Programming</h3>
-        <p>Physics engine integration, procedural generation, game-feel tuning.</p>
+      <div class="intro-keywords-card">
+        <h3>Background</h3>
+        <div class="keyword-list">
+          <span class="keyword-pill">Computer Engineering</span>
+          <span class="keyword-pill">Game Development</span>
+          <span class="keyword-pill">2 Mobile Games</span>
+          <span class="keyword-pill">Gameplay Programming</span>
+          <span class="keyword-pill">Physics &amp; Feel</span>
+        </div>
       </div>
-      <div class="card card-amber">
-        <h3>🎨 Art &amp; Animation</h3>
-        <p>Pixel art characters, parallax environments, death animations (lots of them).</p>
+      <div class="intro-social-card">
+        <h3>Socials</h3>
+        <div class="social-list compact-socials">
+          <p><strong>LinkedIn</strong><br/>linkedin.com/in/your-linkedin-handle</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>🎵 Audio</h3>
-        <p>Dynamic soundtrack that reacts to in-game rhythm &amp; tension.</p>
+      <div class="qr-card center">
+        <h3>LinkedIn QR</h3>
+        <img
+          class="qr-image"
+          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&amp;data=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fyour-linkedin-handle"
+          alt="QR code linking to LinkedIn profile"
+        />
       </div>
     </div>
-    <p style="margin-top:0.8rem; font-size:0.55em; color:var(--hf-muted);">
-      Solo or team? Swap out whatever applies to your project.
-    </p>
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       SLIDE 3 — WHAT IS HOPFALL?
+       SLIDE 4 — WHAT IS HOPFALL?
        ~1 minute
   ══════════════════════════════════════════════════════════ -->
   <section>
@@ -187,7 +211,7 @@
         <p><strong>Zone 3 — The Pulse</strong>: rhythm windows unlock. Beat-sync hazards appear.</p>
       </div>
       <div class="timeline-item">
-        <div class="timeline-dot" style="background:#f43f5e;"></div>
+        <div class="timeline-dot" style="background:var(--hf-accent4);"></div>
         <p><strong>Zone 4 — Freefall</strong>: procedural section. No safe floor. Pure mastery check.</p>
       </div>
     </div>
@@ -309,7 +333,7 @@
         </div>
       </div>
       <div class="timeline-item fragment">
-        <div class="timeline-dot" style="background:#f43f5e;"></div>
+        <div class="timeline-dot" style="background:var(--hf-accent4);"></div>
         <div>
           <p><strong>Problem:</strong> Players stopped reading hazards — died "unfairly".</p>
           <p style="color:var(--hf-accent2);">→ Hazard preview flashes 1 beat before activation.</p>
