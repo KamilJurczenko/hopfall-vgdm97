@@ -220,6 +220,50 @@
   text-align: center;
 }
 
+.thank-you-layout {
+  grid-template-columns: 1.45fr 0.55fr;
+  align-items: center;
+}
+
+.thank-you-steam-card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.thank-you-steam-image {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  max-height: 42vh;
+  margin: 0.5rem auto 0;
+  object-fit: contain;
+  border: 0;
+}
+
+.thank-you-discord-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.thank-you-discord-qr {
+  display: block;
+  width: min(100%, 220px);
+  height: auto;
+  margin: 0.5rem auto 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
 .media-slide {
   display: flex;
   align-items: center;
