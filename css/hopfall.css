@@ -40,6 +40,14 @@
   overflow: hidden;
 }
 
+.reveal .slides section:not(:has(> h1, > h2, > h3, > h4)) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 /* ── Background ─────────────────────────────────────────────── */
 .reveal-viewport,
 .reveal .slide-background {
