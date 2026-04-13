@@ -336,6 +336,7 @@
 
 <!-- RevealJS (local) -->
 <script src="node_modules/reveal.js/dist/reveal.js"></script>
+<script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
 <script>
   Reveal.initialize({
     width: 1280,
@@ -363,6 +364,9 @@
 
     // PDF export layout
     pdfSeparateFragments: false,
+
+    // Speaker view / presenter mode
+    plugins: [RevealNotes],
   });
 </script>
 </body>
