@@ -26,6 +26,30 @@ Then visit `http://localhost:3000`.
 
 > **Note:** You can also open `index.html` directly in a browser after running `npm install`, but a local server is recommended for the best experience.
 
+## 🧾 Exporting To PDF
+
+Reveal.js PDF export is now configured in the deck.
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Export directly to PDF:
+
+```bash
+npm run export:pdf
+```
+
+This generates `hopfall-slides.pdf` in the project root.
+
+Manual browser export is also available:
+
+1. Start the local server with `npm start`.
+2. Open `http://localhost:3000/?print-pdf`.
+3. Print the page to PDF from your browser (`Ctrl+P`) using background graphics enabled.
+
 ## 🎹 Keyboard Shortcuts
 
 | Key | Action |

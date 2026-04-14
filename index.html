@@ -10,6 +10,18 @@
   <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css" />
   <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css" />
 
+  <script>
+    (function loadRevealPrintStyles() {
+      var printStylesheet = document.createElement('link');
+      printStylesheet.rel = 'stylesheet';
+      printStylesheet.type = 'text/css';
+      printStylesheet.href = window.location.search.match(/print-pdf/gi)
+        ? 'node_modules/reveal.js/dist/print/pdf.css'
+        : 'node_modules/reveal.js/dist/print/paper.css';
+      document.head.appendChild(printStylesheet);
+    })();
+  </script>
+
   <!-- Custom Hopfall theme -->
   <link rel="stylesheet" href="css/hopfall.css" />
 </head>
